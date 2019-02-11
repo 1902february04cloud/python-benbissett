@@ -38,7 +38,16 @@ Happy Scripting!
 Use the main function for testing purposes and to show me results for all functions.
 '''
 def main():
-
+	print(reverse("example"))
+	print(whichTriangle(60,60,60))
+	print(whichTriangle(30,60,90))
+	print(whichTriangle(30,30,120))
+	print(scrabble("cabbage"))
+	print(armstrong(153))
+	print(armstrong(154))
+	print(primeFactors(30))
+	print(pangram('The quick brown fox jumps over the lazy dog'))
+	print(pangram('Hello There'))
 '''
 1. Reverse a String. Example: reverse("example"); -> "elpmaxe"
 
@@ -49,7 +58,12 @@ Rules:
 param: str
 return: str
 '''
+
 def reverse(string):
+	str = ""
+	for i in string:
+		str = i +str
+	return str
 
 '''
 2. Convert a phrase to its acronym. Techies love their TLA (Three Letter
@@ -59,7 +73,7 @@ long name like Portable Network Graphics to its acronym (PNG).
 param: str
 return: str
 '''
-def acronym(phrase):
+#def acronym(phrase):
 
 '''
 3. Determine if a triangle is equilateral, isosceles, or scalene. An
@@ -73,7 +87,12 @@ param: float, float, float
 return: str -> 'equilateral', 'isoceles', 'scalene'
 '''
 def whichTriangle(sideOne, sideTwo, sideThree):
-
+	if(sideOne == sideTwo == sideThree):
+		return "equilateral"
+	elif(sideOne == sideTwo or sideTwo == sideThree or sideOne == sideThree):
+		return "isosceles"
+	elif(sideOne != sideTwo and sideTwo != sideThree):
+		return "scalene"
 
 '''
 4. Given a word, compute the scrabble score for that word.
@@ -91,6 +110,23 @@ param: str
 return: int
 '''
 def scrabble(word):
+	score = 0
+	for i in word.upper():
+		if(i in ['A','E','I','O','U','L','N','R','S','T']):
+			score += 1
+		elif(i in ['D','G']):
+			score += 2
+		elif(i in ['B','C','M','P']):
+			score += 3
+		elif(i in ['F','H','V','W','Y']):
+			score += 4
+		elif(i in ['K']):
+			score += 5
+		elif(i in ['J', 'X']):
+			score += 8
+		else:
+			score += 10
+	return score
 
 '''
 5. An Armstrong number is a number that is the sum of its own digits each
@@ -108,7 +144,15 @@ param: int
 return: bool
 '''
 def armstrong(number):
-
+	num = str(number)
+	length = int(len(num))
+	total = 0
+	for i in num:
+		total += int(i) ** length
+	if (number == total):
+		return True
+	else:
+		return False
 '''
 6. Compute the prime factors of a given natural number.
 
@@ -119,8 +163,18 @@ Note that 1 is not a prime number.
 param: int
 return: list
 '''
-def primeFactors(number)
-
+def primeFactors(number):
+	primes = []
+	i = 2
+	while i * i <= number:
+		if number % i:
+			i += 1
+		else:
+			number //= i
+			primes.append(i)
+	if number > 1:
+		primes.append(number)
+	return primes
 '''
 7. Determine if a sentence is a pangram. A pangram (Greek: παν γράμμα, pan
 gramma, "every letter") is a sentence using every letter of the alphabet at
@@ -135,6 +189,7 @@ param: str
 return: bool
 '''
 def pangram(sentence):
+	return not set('abcdefghijklmnopqrstuvwxyz') - set(sentence.lower())
 
 '''
 8. Sort list of integers.
@@ -147,8 +202,8 @@ Rules:
 param: list
 return: list
 '''
-def sort(numbers):
-
+#def sort(numbers):
+	
 '''
 9. Create an implementation of the rotational cipher, also sometimes called
 the Caesar cipher.
@@ -178,7 +233,7 @@ quick brown fox jumps over the lazy dog.
 param: int, str
 return: str
 '''
-def rotate(key, string):
+#def rotate(key, string):
 
 '''
 10. Take 10 numbers as input from the user and store all the even numbers in a file called even.txt and
@@ -187,7 +242,7 @@ the odd numbers in a file called odd.txt.
 param: none, from the keyboard
 return: nothing
 '''
-def evenAndOdds():
+#def evenAndOdds():
 
-if __name__ == "__main__"
-    main()
+if __name__ == "__main__":
+	main()
