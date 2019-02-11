@@ -48,6 +48,7 @@ def main():
 	print(primeFactors(30))
 	print(pangram('The quick brown fox jumps over the lazy dog'))
 	print(pangram('Hello There'))
+	evenAndOdds()
 '''
 1. Reverse a String. Example: reverse("example"); -> "elpmaxe"
 
@@ -242,7 +243,16 @@ the odd numbers in a file called odd.txt.
 param: none, from the keyboard
 return: nothing
 '''
-#def evenAndOdds():
+def evenAndOdds():
+	num = input("Enter 10 numbers")
+	numList = num.split()
+	with open("even.txt", "a+") as even:
+		with open("odd.txt", "a+") as odd:
+			for i in numList:
+				if (int(i) % 2 == 0):
+					even.write(i + "\n")
+				else:
+					odd.write(i + "\n")
 
 if __name__ == "__main__":
 	main()
